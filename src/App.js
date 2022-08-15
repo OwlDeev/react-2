@@ -2,25 +2,29 @@ import "./App.css";
 import Input from "./components/Input";
 import Boton from "./components/Boton";
 import { Box, AppBar, Toolbar, Typography } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { useState } from "react";
 
 const theme = createTheme({
-  
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: '#ffffff',
+      main: "#ffffff",
     },
     secondary: {
-      light: '#0066ff',
-      main: '#0044ff',
+      light: "#0066ff",
+      main: "#0044ff",
       // dark: will be calculated from palette.secondary.main,
-      contrastText: '#ffcc00',
-    }
+      contrastText: "#ffcc00",
+    },
   },
 });
 
 function App() {
+
+  const [user, setUser] = useState('');
+  const [pass, setPass] = useState('');
+
   return (
     <div className="App">
       <AppBar position="static" className="appBar">
@@ -33,8 +37,8 @@ function App() {
       <Box className="main" sx={{ height: "85vh", width: "100%" }}>
         <Box className="boxLogin">
           <ThemeProvider theme={theme}>
-            <Input></Input>
-            <Boton></Boton>
+            <Input name={user} setName={setUser} pass={pass} setPass={setPass}></Input>
+            <Boton pass={pass}></Boton>
           </ThemeProvider>
         </Box>
       </Box>
